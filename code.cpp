@@ -75,11 +75,15 @@ public:
         cout << "Enter Credit Card details:\n";
         cout << "Card Number: ";
         cin >> cardNumber;
+           if(cardNumber.size()!=16)return false;
         cout << "Expiry Date (MM/YY): ";
         cin >> expiryDate;
+        if(expiryDate[2]!='/')return false;
         cout << "CVV: ";
         cin >> cvv;
+         if(cvv.size()!=3 || isdigit(cvv[0]))return false;
         cout << "Credit Card details entered: " << cardNumber << ", Expiry: " << expiryDate << ", CVV: " << cvv << endl;
+        return true;
     }
     void makePayment() override {
         cout << "Payment successful using Credit Card.\n";
@@ -93,11 +97,16 @@ public:
         cout << "Enter Debit Card details:\n";
         cout << "Card Number: ";
         cin >> cardNumber;
+        if(cardNumber.size()!=16)return false;
         cout << "Expiry Date (MM/YY): ";
         cin >> expiryDate;
+        if(expiryDate[2]!='/')return false;
         cout << "CVV: ";
         cin >> cvv;
+        if(cvv.size()!=3 || isdigit(cvv[0]))return false;
         cout << "Debit Card details entered: " << cardNumber << ", Expiry: " << expiryDate << ", CVV: " << cvv << endl;
+
+        return true;
     }
     void makePayment() override {
         cout << "Payment successful using Debit Card.\n";
@@ -155,9 +164,7 @@ public:
             cout<<"false";
         }
 
-        // provider->processPayment();  
-        // method->makePayment();  
-        // cout << "Payment of Rs." << amount << " completed successfully.\n";
+        
     }
 
     ~PaymentProcess() { 
